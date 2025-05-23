@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>شمارش معکوس تا فعال‌سازی</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f1f5f9;
+      font-family: 'Vazirmatn', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: #38bdf8;
+    }
+
+    .countdown-container {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .countdown-box {
+      background: #1e293b;
+      border-radius: 20px;
+      padding: 1rem 1.2rem;
+      min-width: 90px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .countdown-box:hover {
+      transform: scale(1.05);
+    }
+
+    .countdown-box span {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #facc15;
+    }
+
+    .label {
+      font-size: 1rem;
+      margin-top: 0.3rem;
+      color: #e2e8f0;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+      .countdown-box span {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>زمان باقی‌مانده تا فعال‌سازی</h1>
+  <div class="countdown-container">
+    <div class="countdown-box">
+      <span id="days">00</span>
+      <div class="label">روز</div>
+    </div>
+    <div class="countdown-box">
+      <span id="hours">00</span>
+      <div class="label">ساعت</div>
+    </div>
+    <div class="countdown-box">
+      <span id="minutes">00</span>
+      <div class="label">دقیقه</div>
+    </div>
+    <div class="countdown-box">
+      <span id="seconds">00</span>
+      <div class="label">ثانیه</div>
+    </div>
+  </div>
+
+  <script>
+    function updateCountdown() {
+      // 3 خرداد 1404 ساعت 22 شب (معادل میلادی)
+      const targetDate = new Date("2025-08-07T22:00:00+03:30");
+
+
+      const now = new Date();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.querySelector('.countdown-container').innerHTML = "<h2>✅ فعال شد!</h2>";
+        clearInterval(interval);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>

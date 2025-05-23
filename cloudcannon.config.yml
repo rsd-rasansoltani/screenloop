@@ -3,11 +3,61 @@ source: /
 paths:
   uploads: uploads
   static: ''
+collections_config:
+  pages:
+    path:
+    glob: []
+    name: screenloop.ir
+    singular_name:
+    icon: notes
+    url: screenloop.ir
+    include_developer_files: true
+    documentation:
+      url: screenloop.ir
+      text:
+      icon:
+    description: screenloop.ir
+    preview:
+    sort:
+    sort_options:
+    _editables:
+      text:
+        allow_custom_markup: true
+        remove_custom_markup: true
+        bold:
+        copyformatting:
+        italic:
+        link:
+        paths:
+        redo:
+        removeformat:
+        strike:
+        subscript:
+        superscript:
+        underline:
+        undo:
+    _enabled_editors:
+    _inputs:
+    _select_data:
+    _structures:
+    add_options:
+    create:
+    disable_add: false
+    disable_add_folder: false
+    disable_file_actions: false
+    new_preview_url:
+    schemas:
+    schema_key:
 collection_groups:
   - heading:
     collections:
 _enabled_editors:
   - data
+file_config:
+  - glob:
+    _inputs:
+    _structures:
+    _select_data:
 base_url: screenloop.ir
 editor:
   default_path: screenloop.ir/admin
